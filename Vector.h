@@ -2,6 +2,12 @@
 #include<iostream>
 using namespace std;
 
+template<typename data>
+class Vector;
+
+template<typename data>
+ostream& operator<<(ostream& COUT, Vector<data>& veccy);
+
 template <typename data>
 class Vector
 {
@@ -9,32 +15,31 @@ private:
 	int capacity; //this holds the max size of the array
 	data* cur_user_array;
 	int sizeIs; //this holds the total amount of elements that is inside the array
-	int* iterator;
+	friend ostream& operator<< <>(ostream& COUT, Vector<data>& veccy);
+
 public:
 	Vector();
 	~Vector();
-	void outputAry();
-	int size();
-	void push_back(data push_data_to_back_vector/*user_input*/);
-	void auto_resize();
-	void pop_back(); //removes the last element
-	void insert(int index, data value);
-	void clear();
-	void shrink_to_fit();
-	bool is_empty();
 	data front();
 	data back();
+	bool is_empty();
+	void auto_resize();
+	void clear();
+	void insert(int index, data value);
+	void pop_back(); //removes the last element
+	void push_back(data push_data_to_back_vector/*user_input*/);
+	void shrink_to_fit();
+	int get_size();
+	int get_capacity();
 
+	//
+	void swap(int index1, int index2);
+	
 
-	//impliment this to output the array
-	/*ostream& operator<<(ostream& os, Vector& v)
-	{
-		os << "[ ";
-		for (int i = 0; i < v._size - 1; i++)
-		{
-			os << v.arr[i] << ", ";
-		}
-		os << v.arr[v._size - 1] << " ]";
-		return os;
-	}*/
+//debug: 
+/*(These functions should only ever be called when you need to debug 
+the program and is not intended to be part of a release version)*/
+	void debugAry();
+
+	
 };
