@@ -23,10 +23,10 @@ void Vector<data>::outputAry()
 	cout << endl;
 	cout << "[";
 	for (int i = 0; i < sizeIs; i++)
-		{
-			cout << "Element " << i << ": ";
-			cout << cur_user_array[i] << endl;//", ";
-		}
+	{
+		cout << "Element " << i << ": ";
+		cout << cur_user_array[i] << endl;//", ";
+	}
 	//cout << cur_user_array[sizeIs];
 	cout << "]";
 	cout << endl;
@@ -83,7 +83,7 @@ template<typename data>
 void Vector<data>::insert(int index, data value)
 {
 	auto_resize(); //if the array is full, double the size to be able to insert something new
-	
+
 	if (index > sizeIs) //fix this
 	{
 		cout << "Index is too large" << endl;
@@ -115,3 +115,24 @@ void Vector<data>::shrink_to_fit()
 		capacity = sizeIs;
 	}
 }
+
+template<typename data>
+bool Vector<data>::is_empty()
+{
+	if (sizeIs == 0)
+		return 1;
+	return 0;
+}
+
+template<typename data>
+data Vector<data>::front()
+{
+	return cur_user_array[0];
+}
+
+template<typename data>
+data Vector<data>::back()
+{
+	return cur_user_array[sizeIs - 1];
+}
+
