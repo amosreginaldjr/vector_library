@@ -3,6 +3,7 @@
 #include"Vector.cpp"
 using namespace std;
 
+void vectorString(Vector<string>& vecSt);
 void vectorChar(Vector<char>& vecChar);
 void vector2Operations(Vector<int>& vec);
 void vector1Operations(Vector<int>& vec);
@@ -11,27 +12,14 @@ int main()
 	Vector<int> vec;
 	Vector<int> vec2;
 	Vector<char> vecChar;
+	Vector<string> vecSt;
 
-	//vector1Operations(vec);
+	vector1Operations(vec);
 	//vector2Operations(vec2);
-
-	
-	
-
-	vectorChar(vecChar);
+	//vectorChar(vecChar);
+	//vectorString(vecSt);
 
 
-	Vector <string> vecSt;
-	Vector<string>* pVecSt = &vecSt;
-	vecSt.push_back("Reginald");
-	vecSt.push_back("Jr");
-	vecSt.push_back("Amos");
-	cout << vecSt << endl;
-
-	vecSt.swap(2, 0);
-	cout << vecSt << endl;
-	vecSt.swap(1, 2);
-	cout << vecSt << endl;
 
 	return 0;
 }
@@ -128,4 +116,17 @@ void vectorChar(Vector<char>& vecChar)
 
 	
 	cout << vecChar << endl;
+}
+
+void vectorString(Vector<string>& vecSt)
+{
+	vecSt.push_back("Reginald");
+	vecSt.push_back("Jr");
+	vecSt.push_back("Amos");
+	cout << vecSt << endl;
+
+	vecSt.swap(2, 0);
+	cout << vecSt;
+	vecSt.swap(1, 2);
+	cout << vecSt << endl;
 }

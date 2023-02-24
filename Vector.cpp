@@ -46,7 +46,7 @@ void Vector<data>::auto_resize()
 	{
 		capacity *= 2;
 		//cout << "size has been doubled" << endl;
-		cout << "capacity: " << capacity << "|||sizeIs: " << sizeIs << endl;
+		cout << "capacity: " << capacity << "|sizeIs: " << sizeIs << endl;
 
 		data* temp_arr = new data[capacity];
 		for (int i = 0; i < capacity / 2; i++)
@@ -147,7 +147,7 @@ void Vector<data>::swap(int index1, int index2)
 
 //operator overloading
 template<typename data> 
-ostream& operator<<(std::ostream& COUT, Vector<data>& veccy)
+ostream& operator<<(ostream& COUT, Vector<data>& veccy)
 {
 	COUT << "[";
 	for (int i = 0; i < veccy.get_size() - 1; i++)
@@ -158,6 +158,14 @@ ostream& operator<<(std::ostream& COUT, Vector<data>& veccy)
 	cout << "]" << endl;
 	return COUT;
 }
+
+template<typename data>
+bool operator<(Vector<data>& input1, Vector<data>& input2)
+{
+	return input1 < input2;
+}
+
+
 
 
 
