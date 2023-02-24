@@ -8,6 +8,9 @@ class Vector;
 template<typename data>
 ostream& operator<<(ostream& COUT, Vector<data>& veccy);
 
+template<typename data>
+bool operator<(Vector& input1, Vector& input2);
+
 template <typename data>
 class Vector
 {
@@ -16,6 +19,7 @@ private:
 	data* cur_user_array;
 	int sizeIs; //this holds the total amount of elements that is inside the array
 	friend ostream& operator<< <>(ostream& COUT, Vector<data>& veccy);
+	friend bool operator<(Vector& input1, Vector& input2)
 
 public:
 	Vector();
