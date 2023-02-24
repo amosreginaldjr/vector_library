@@ -3,13 +3,6 @@
 using namespace std;
 
 template<typename data>
-Vector<data>::~Vector()
-{
-	delete[] cur_user_array;
-	cout << endl << "Destructor Called" << endl;
-}
-
-template<typename data>
 Vector<data>::Vector()
 {
 	capacity = 1; //default 1?
@@ -18,33 +11,30 @@ Vector<data>::Vector()
 }
 
 template<typename data>
-void Vector<data>::outputAry()
+Vector<data>::~Vector()
 {
-	cout << endl;
-	cout << "[";
-	for (int i = 0; i < sizeIs; i++)
-	{
-		cout << "Element " << i << ": ";
-		cout << cur_user_array[i] << endl;//", ";
-	}
-	//cout << cur_user_array[sizeIs];
-	cout << "]";
-	cout << endl;
+	delete[] cur_user_array;
+	cout << "Destructor Called" << endl;
 }
 
 template<typename data>
-int Vector<data>::size() //size of the array currently
+data Vector<data>::front()
 {
-	return sizeIs;
+	return cur_user_array[0];
 }
 
 template<typename data>
-void Vector<data>::push_back(data push_data_to_back_vector/*user_input*/)
+data Vector<data>::back()
 {
-	sizeIs++;
-	auto_resize();
-	cout << "push_back called" << endl;
-	cur_user_array[sizeIs - 1] = push_data_to_back_vector;
+	return cur_user_array[sizeIs - 1];
+}
+
+template<typename data>
+bool Vector<data>::is_empty()
+{
+	if (sizeIs == 0)
+		return 1;
+	return 0;
 }
 
 template<typename data>
@@ -69,14 +59,9 @@ void Vector<data>::auto_resize()
 }
 
 template<typename data>
-void Vector<data>::pop_back()
+void Vector<data>::clear()
 {
-	if (sizeIs == 0)
-	{
-		cout << "there is nothing to pop" << endl;
-		return;
-	}
-	sizeIs--; //this shrinks the size of the array by 1 so it deletes the last element
+	sizeIs = 0;
 }
 
 template<typename data>
@@ -99,9 +84,23 @@ void Vector<data>::insert(int index, data value)
 }
 
 template<typename data>
-void Vector<data>::clear()
+void Vector<data>::pop_back()
 {
-	sizeIs = 0;
+	if (sizeIs == 0)
+	{
+		cout << "there is nothing to pop" << endl;
+		return;
+	}
+	sizeIs--; //this shrinks the size of the array by 1 so it deletes the last element
+}
+
+template<typename data>
+void Vector<data>::push_back(data push_data_to_back_vector/*user_input*/)
+{
+	sizeIs++;
+	auto_resize();
+	cout << "push_back called" << endl;
+	cur_user_array[sizeIs - 1] = push_data_to_back_vector;
 }
 
 template<typename data>
@@ -117,22 +116,63 @@ void Vector<data>::shrink_to_fit()
 }
 
 template<typename data>
-bool Vector<data>::is_empty()
+int Vector<data>::get_size() //size of the array currently
 {
-	if (sizeIs == 0)
-		return 1;
-	return 0;
+	return sizeIs;
 }
 
 template<typename data>
-data Vector<data>::front()
+int Vector<data>::get_capacity()
 {
-	return cur_user_array[0];
+	return capacity;
 }
 
+
+//
 template<typename data>
-data Vector<data>::back()
+void Vector<data>::swap(int index1, int index2)
 {
-	return cur_user_array[sizeIs - 1];
+	if (index1 > sizeIs || index2 > sizeIs)
+		return; //try catch throw
+
+	data temp;
+	temp = cur_user_array[index1];
+	cur_user_array[index1] = cur_user_array[index2];
+	cur_user_array[index2] = temp;
 }
 
+
+
+
+
+//operator overloading
+template<typename data> 
+ostream& operator<<(std::ostream& COUT, Vector<data>& veccy)
+{
+	COUT << "[";
+	for (int i = 0; i < veccy.get_size() - 1; i++)
+	{
+		COUT << veccy.cur_user_array[i] << ", ";
+	}
+	COUT << veccy.cur_user_array[veccy.get_size() - 1];
+	cout << "]" << endl;
+	return COUT;
+}
+
+
+
+//Debug Functions:
+template<typename data>
+void Vector<data>::debugAry()
+{
+	//cout << endl;
+	cout << "[";
+	for (int i = 0; i < sizeIs; i++)
+	{
+		cout << "Element " << i << ": ";
+		cout << cur_user_array[i] << endl;//", ";
+	}
+	//cout << cur_user_array[sizeIs];
+	cout << "]";
+	cout << endl;
+}
