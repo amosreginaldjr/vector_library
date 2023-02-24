@@ -9,6 +9,7 @@ private:
 	int capacity; //this holds the max size of the array
 	data* cur_user_array;
 	int sizeIs; //this holds the total amount of elements that is inside the array
+	int* iterator;
 public:
 	Vector();
 	~Vector();
@@ -21,6 +22,8 @@ public:
 	void clear();
 	void shrink_to_fit();
 	bool is_empty();
+	data front();
+	data back();
 
 
 	//impliment this to output the array
