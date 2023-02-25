@@ -9,7 +9,7 @@ template<typename data>
 ostream& operator<<(ostream& COUT, Vector<data>& veccy);
 
 template<typename data>
-bool operator<(Vector& input1, Vector& input2);
+bool& operator<(Vector<data>& input1, Vector<data>& input2);
 
 template <typename data>
 class Vector
@@ -19,7 +19,7 @@ private:
 	data* cur_user_array;
 	int sizeIs; //this holds the total amount of elements that is inside the array
 	friend ostream& operator<< <>(ostream& COUT, Vector<data>& veccy);
-	friend bool operator<(Vector& input1, Vector& input2)
+	friend bool& operator< <>(Vector& input1, Vector& input2);
 
 public:
 	Vector();
@@ -38,12 +38,12 @@ public:
 
 	//
 	void swap(int index1, int index2);
-	
 
-//debug: 
-/*(These functions should only ever be called when you need to debug 
-the program and is not intended to be part of a release version)*/
+
+	//debug: 
+	/*(These functions should only ever be called when you need to debug
+	the program and is not intended to be part of a release version)*/
 	void debugAry();
 
-	
+
 };

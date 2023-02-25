@@ -146,7 +146,7 @@ void Vector<data>::swap(int index1, int index2)
 
 
 //operator overloading
-template<typename data> 
+template<typename data>
 ostream& operator<<(ostream& COUT, Vector<data>& veccy)
 {
 	COUT << "[";
@@ -160,7 +160,7 @@ ostream& operator<<(ostream& COUT, Vector<data>& veccy)
 }
 
 template<typename data>
-bool operator<(Vector<data>& input1, Vector<data>& input2)
+bool& operator<(Vector<data>& input1, Vector<data>& input2)
 {
 	return input1 < input2;
 }
