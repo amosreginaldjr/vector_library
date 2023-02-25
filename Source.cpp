@@ -15,10 +15,21 @@ int main()
 	Vector<string> vecSt;
 
 	vector1Operations(vec);
-	//vector2Operations(vec2);
+	vector2Operations(vec2);
 	//vectorChar(vecChar);
 	//vectorString(vecSt);
 
+	int forlen = 0;
+	if (vec.get_size() < vec2.get_size())
+		forlen = vec.get_size();
+	else
+		forlen = vec2.get_size();
+
+	//for (int i = 0; i < forlen; i++)
+	//{
+	//	vec[i] < vec2[i];
+	//}
+	vec < vec2;
 
 
 	return 0;
@@ -107,14 +118,14 @@ void vectorChar(Vector<char>& vecChar)
 	vecChar.push_back('i');
 	vecChar.pop_back();
 	vecChar.insert(2, 'i');
-	
+
 	cout << "The FRONT is: " << vecChar.front() << endl;
 	cout << "The BACK is: " << vecChar.back() << endl;
 
 	cout << "The SIZE is: " << vecChar.get_size() << endl;
 	cout << "The CAPACITY is: " << vecChar.get_capacity() << endl;
 
-	
+
 	cout << vecChar << endl;
 }
 
