@@ -29,6 +29,7 @@ int main()
 	//{
 	//	vec[i] < vec2[i];
 	//}
+
 	vec < vec2;
 
 

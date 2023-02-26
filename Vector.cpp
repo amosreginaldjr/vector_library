@@ -160,12 +160,10 @@ ostream& operator<<(ostream& COUT, Vector<data>& veccy)
 }
 
 template<typename data>
-bool& operator<(Vector<data>& input1, Vector<data>& input2)
+bool Vector<data>::operator<(Vector<data>& input1)
 {
-	return input1 < input2;
+	return true;
 }
-
-
 
 
 
