@@ -16,10 +16,14 @@ private:
 	data* cur_user_array;
 	int sizeIs; //this holds the total amount of elements that is inside the array
 	friend ostream& operator<< <>(ostream& COUT, Vector<data>& veccy);
-	bool operator<(Vector<data>& input1);
-
-public: 
 	//bool operator<(Vector<data>& input1);
+
+public:
+	bool operator<(Vector<data>& input);
+	bool operator>(Vector<data>& input);
+	bool operator>=(Vector<data>& input);
+	bool operator<=(Vector<data>& input);
+	data& operator[](int index);
 	Vector();
 	~Vector();
 	data front();
