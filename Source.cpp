@@ -3,6 +3,7 @@
 #include"Vector.cpp"
 using namespace std;
 
+void testingOperatorOverloading(Vector<int>& vec, Vector<int>& vec2);
 void vectorString(Vector<string>& vecSt);
 void vectorChar(Vector<char>& vecChar);
 void vector2Operations(Vector<int>& vec);
@@ -19,19 +20,15 @@ int main()
 	//vectorChar(vecChar);
 	//vectorString(vecSt);
 
-	int forlen = 0;
-	if (vec.get_size() < vec2.get_size())
-		forlen = vec.get_size();
-	else
-		forlen = vec2.get_size();
+	testingOperatorOverloading(vec, vec2);
 
-	//for (int i = 0; i < forlen; i++)
-	//{
-	//	vec[i] < vec2[i];
-	//}
 
-	vec < vec2;
-
+	bool a, b, c, d;
+	a = (vec < vec2);
+	b = (vec <= vec2);
+	c = (vec > vec2);
+	d = (vec >= vec2);
+	cout << a << b << c << d << endl;
 
 	return 0;
 }
@@ -76,7 +73,7 @@ void vector1Operations(Vector<int>& vec)
 void vector2Operations(Vector<int>& vec2)
 {
 	//input data to array:
-	vec2.push_back(9595);
+	vec2.push_back(1595);
 	vec2.push_back(8569); vec2.push_back(7542); vec2.push_back(3658); vec2.push_back(2569);
 	vec2.push_back(2579); vec2.push_back(6852); vec2.push_back(6541); vec2.push_back(7856);
 	vec2.push_back(55); vec2.push_back(56);
@@ -141,4 +138,33 @@ void vectorString(Vector<string>& vecSt)
 	cout << vecSt;
 	vecSt.swap(1, 2);
 	cout << vecSt << endl;
+}
+
+void testingOperatorOverloading(Vector<int>& vec, Vector<int>& vec2)
+{
+	//operator<
+	if (vec < vec2)
+		cout << "vec < vec2\n";
+	else
+		cout << "vec >= vec2\n";
+
+	//operator<=
+	if (vec <= vec2)
+		cout << "vec <= vec2\n";
+	else
+		cout << "vec > vec2\n";
+
+	//operator>
+	if (vec > vec2)
+		cout << "vec > vec2\n";
+	else
+		cout << "vec <= vec2\n";
+
+	//operator>=
+	if (vec >= vec2)
+		cout << "vec >= vec2\n";
+	else
+		cout << "vec < vec2\n";
+
+	
 }

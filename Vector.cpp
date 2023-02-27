@@ -142,9 +142,6 @@ void Vector<data>::swap(int index1, int index2)
 }
 
 
-
-
-
 //operator overloading
 template<typename data>
 ostream& operator<<(ostream& COUT, Vector<data>& veccy)
@@ -160,10 +157,88 @@ ostream& operator<<(ostream& COUT, Vector<data>& veccy)
 }
 
 template<typename data>
-bool Vector<data>::operator<(Vector<data>& input1)
+bool Vector<data>::operator<(Vector<data>& input)
 {
-	return true;
+	if (sizeIs != input.sizeIs)
+		return (sizeIs < input.sizeIs);
+	
+	if (sizeIs == input.sizeIs)
+	{
+		for (int i = 0; i < sizeIs; i++)
+		{
+			if (cur_user_array[i]/*or you can use "this[i]"*/ < input[i])
+				return true;
+			else if (cur_user_array[i] > input[i])
+				return false;
+		}
+		return false;
+	}
 }
+
+template<typename data>
+bool Vector<data>::operator>(Vector<data>& input)
+{
+	if (sizeIs != input.sizeIs)
+		return(sizeIs > input.sizeIs);
+
+	if (sizeIs == input.sizeIs)
+	{
+		for (int i = 0; i < sizeIs; i++)
+		{
+			if (cur_user_array[i] > input[i])
+				return true;
+			else if (cur_user_array[i] > input[i])
+				return false;
+		}
+		return false;
+	}
+}
+
+template<typename data>
+bool Vector<data>::operator>=(Vector<data>& input)
+{
+	if (sizeIs != input.sizeIs)
+		return(sizeIs > input.sizeIs);
+
+	if (sizeIs == input.sizeIs)
+	{
+		for (int i = 0; i < sizeIs; i++)
+		{
+			if (cur_user_array[i] > input[i])
+				return true;
+			else if (cur_user_array[i] > input[i])
+				return false;
+		}
+		return false;
+	}
+}
+
+template<typename data>
+bool Vector<data>::operator<=(Vector<data>& input)
+{
+	if (sizeIs != input.sizeIs)
+		return (sizeIs < input.sizeIs);
+
+	if (sizeIs == input.sizeIs)
+	{
+		for (int i = 0; i < sizeIs; i++)
+		{
+			if (cur_user_array[i]/*or you can use "this[i]"*/ < input[i])
+				return true;
+			else if (cur_user_array[i] > input[i])
+				return false;
+		}
+		return false;
+	}
+}
+
+
+template<typename data>
+data& Vector<data>::operator[](int index)
+{
+	return (cur_user_array[index]);
+}
+
 
 
 
