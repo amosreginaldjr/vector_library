@@ -231,6 +231,57 @@ bool Vector<data>::operator<=(Vector<data>& input)
 	}
 }
 
+//template<typename data>
+//data& Vector<data>::operator+(Vector<data>& input)
+//{
+//	data* temp = new data[sizeIs];
+//
+//	for (int i = 0; i < sizeIs; i++)
+//	{
+//		temp[i] = cur_user_array[i] + input[i];
+//	}
+//	cout << "function:";
+//	return temp[i];
+//}
+
+//this is the only way i could overload+.
+template<typename data>
+data& Vector<data>::operator+(Vector<data>& input)
+{
+	cout << '[';
+	return addArrays(cur_user_array, input.cur_user_array, sizeIs, 0);
+}
+
+template<typename data>
+data& Vector<data>::addArrays(data* a1, data* a2, int sizeIs, int i) 
+{
+	//something is making this return the sum of the first two elemetns at the end
+
+	if (i == sizeIs) 
+	{
+		return *a1;
+	}
+	else 
+	{
+		a1[i] = a1[i] + a2[i];
+		cout << a1[i] << ' ';
+		return addArrays(a1, a2, sizeIs, i + 1);
+	}
+}
+
+
+//left off here:::
+template<typename data>
+data& Vector<data>::operator=(Vector<data>& input)
+{
+	data temp[input.sizeIs];
+	for (int i = 0; i < sizeIs; i++)
+	{
+		temp[i] = input;
+	}
+	return temp;
+}
+
 
 template<typename data>
 data& Vector<data>::operator[](int index)
