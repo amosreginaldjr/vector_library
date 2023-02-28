@@ -16,7 +16,6 @@ private:
 	data* cur_user_array;
 	int sizeIs; //this holds the total amount of elements that is inside the array
 	friend ostream& operator<< <>(ostream& COUT, Vector<data>& veccy);
-	//bool operator<(Vector<data>& input1);
 
 public:
 	bool operator<(Vector<data>& input);
@@ -24,6 +23,7 @@ public:
 	bool operator>=(Vector<data>& input);
 	bool operator<=(Vector<data>& input);
 	data& operator[](int index);
+	data& operator->();
 	Vector();
 	~Vector();
 	data front();
@@ -46,6 +46,5 @@ public:
 	/*(These functions should only ever be called when you need to debug
 	the program and is not intended to be part of a release version)*/
 	void debugAry();
-
 
 };
