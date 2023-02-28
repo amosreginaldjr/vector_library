@@ -128,7 +128,6 @@ int Vector<data>::get_capacity()
 }
 
 
-//
 template<typename data>
 void Vector<data>::swap(int index1, int index2)
 {
@@ -161,7 +160,7 @@ bool Vector<data>::operator<(Vector<data>& input)
 {
 	if (sizeIs != input.sizeIs)
 		return (sizeIs < input.sizeIs);
-	
+
 	if (sizeIs == input.sizeIs)
 	{
 		for (int i = 0; i < sizeIs; i++)
@@ -236,7 +235,13 @@ bool Vector<data>::operator<=(Vector<data>& input)
 template<typename data>
 data& Vector<data>::operator[](int index)
 {
-	return (cur_user_array[index]);
+	return cur_user_array[index];
+}
+
+template<typename data>
+data& Vector<data>::operator->()
+{
+	return cur_user_array;
 }
 
 

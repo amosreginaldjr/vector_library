@@ -11,9 +11,17 @@ void vector1Operations(Vector<int>& vec);
 int main()
 {
 	Vector<int> vec;
+	Vector<int>* pvec = &vec;
+
 	Vector<int> vec2;
+	Vector<int>* pvec2 = &vec2;
+
 	Vector<char> vecChar;
+	Vector<char>* pvecChar = &vecChar;
+
 	Vector<string> vecSt;
+	Vector<string>* pvecSt = &vecSt;
+
 
 	vector1Operations(vec);
 	vector2Operations(vec2);
@@ -22,13 +30,16 @@ int main()
 
 	testingOperatorOverloading(vec, vec2);
 
-
-	bool a, b, c, d;
-	a = (vec < vec2);
-	b = (vec <= vec2);
-	c = (vec > vec2);
-	d = (vec >= vec2);
-	cout << a << b << c << d << endl;
+	/*bool a, b, c, d;
+	a = (vec < vec2);	 //3654  <  29  =  0
+	b = (vec <= vec2);	 //3654  <= 29  =  1
+	c = (vec > vec2);	 //3654  >  29  =  1
+	d = (vec >= vec2);	 //3654  >= 29  =  1
+	cout << a << b << c << d << endl;*/
+	
+	cout << endl;
+	cout << "pvec->front(): " << pvec->front();
+	cout << endl;
 
 	return 0;
 }
@@ -166,5 +177,5 @@ void testingOperatorOverloading(Vector<int>& vec, Vector<int>& vec2)
 	else
 		cout << "vec < vec2\n";
 
-	
+
 }
