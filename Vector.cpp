@@ -253,19 +253,20 @@ data& Vector<data>::operator+(Vector<data>& input)
 }
 
 template<typename data>
-data& Vector<data>::addArrays(data* a1, data* a2, int sizeIs, int i) 
+data& Vector<data>::addArrays(data* input1, data* input2, int sizeIs, int i)
 {
 	//something is making this return the sum of the first two elemetns at the end
 
-	if (i == sizeIs) 
+	if (i == sizeIs)
 	{
-		return *a1;
+		cout << ']';
+		return *input1;
 	}
-	else 
+	else
 	{
-		a1[i] = a1[i] + a2[i];
-		cout << a1[i] << ' ';
-		return addArrays(a1, a2, sizeIs, i + 1);
+		input1[i] = input1[i] + input2[i];
+		cout << input1[i] << ' ';
+		return addArrays(input1, input2, sizeIs, i + 1);
 	}
 }
 

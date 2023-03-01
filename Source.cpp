@@ -39,16 +39,11 @@ int main()
 
 	cout << endl << "pvec->front(): " << pvec->front() << endl;
 
-	Vector<int> sum[11];
-	for (int i = 0; i < vec.get_size(); i++)
-	{
-		cout << vec[i] + vec2[i] << ' ';
-	}
-	cout << endl;
+	//Vector<int> sum[11];
 
 	//Vector<int> test;
 	//test = vec;
-	
+
 	cout << vec << endl;
 	cout << vec2 << endl;
 	cout << vec + vec2 << endl;
