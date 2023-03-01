@@ -24,7 +24,7 @@ public:
 	bool operator<=(Vector<data>& input);
 	//data& operator+(Vector<data>& input);
 	data& operator+(Vector<data>& input);
-	data& addArrays(data* a1, data* a2, int sizeIs, int i);
+	data& addArrays(data* input1, data* input2, int sizeIs, int i);
 	data& operator=(Vector<data>& input);
 	data& operator[](int index);
 	data& operator->();
