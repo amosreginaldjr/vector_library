@@ -46,7 +46,7 @@ void Vector<data>::auto_resize()
 	{
 		capacity *= 2;
 		//cout << "size has been doubled" << endl;
-		cout << "capacity: " << capacity << "|sizeIs: " << sizeIs << endl;
+		//cout << "capacity: " << capacity << "|sizeIs: " << sizeIs << endl;
 
 		data* temp_arr = new data[capacity];
 		for (int i = 0; i < capacity / 2; i++)
@@ -99,7 +99,7 @@ void Vector<data>::push_back(data push_data_to_back_vector/*user_input*/)
 {
 	sizeIs++;
 	auto_resize();
-	cout << "push_back called" << endl;
+	//cout << "push_back called" << endl;
 	cur_user_array[sizeIs - 1] = push_data_to_back_vector;
 }
 
@@ -138,6 +138,30 @@ void Vector<data>::swap(int index1, int index2)
 	temp = cur_user_array[index1];
 	cur_user_array[index1] = cur_user_array[index2];
 	cur_user_array[index2] = temp;
+}
+
+template<typename data>
+void Vector<data>::remove(int index)
+{
+	if (!is_empty())
+	{
+		for (int i = index; i < sizeIs; i++)
+		{
+			cur_user_array[i] = cur_user_array[i + 1];
+		}
+		sizeIs--;
+	}
+}
+
+template<typename data>
+int Vector<data>::indexOf(data& lookFor)
+{
+	for (int i = 0; i < sizeIs; i++)
+	{
+		if (cur_user_array[i] == lookFor)
+			return i;
+	}
+	return 0;
 }
 
 
@@ -231,56 +255,32 @@ bool Vector<data>::operator<=(Vector<data>& input)
 	}
 }
 
-//template<typename data>
-//data& Vector<data>::operator+(Vector<data>& input)
-//{
-//	data* temp = new data[sizeIs];
-//
-//	for (int i = 0; i < sizeIs; i++)
-//	{
-//		temp[i] = cur_user_array[i] + input[i];
-//	}
-//	cout << "function:";
-//	return temp[i];
-//}
-
-//this is the only way i could overload+.
 template<typename data>
-data& Vector<data>::operator+(Vector<data>& input)
+Vector<data> Vector<data>::operator+(Vector<data>& input1)
 {
-	cout << '[';
-	return addArrays(cur_user_array, input.cur_user_array, sizeIs, 0);
-}
-
-template<typename data>
-data& Vector<data>::addArrays(data* input1, data* input2, int sizeIs, int i)
-{
-	//something is making this return the sum of the first two elemetns at the end
-
-	if (i == sizeIs)
+	Vector<data> temp;
+	for (int i = 0; i < sizeIs; i++)
 	{
-		cout << ']';
-		return *input1;
+		temp.push_back(cur_user_array[i] + input1[i]);
 	}
-	else
-	{
-		input1[i] = input1[i] + input2[i];
-		cout << input1[i] << ' ';
-		return addArrays(input1, input2, sizeIs, i + 1);
-	}
+	return temp;
 }
 
 
 //left off here:::
 template<typename data>
-data& Vector<data>::operator=(Vector<data>& input)
+bool Vector<data>::operator==(Vector<data>& input)
 {
-	data temp[input.sizeIs];
+	if (/*cur_user_array*/this->sizeIs != input.sizeIs)
+		return false;
+
 	for (int i = 0; i < sizeIs; i++)
 	{
-		temp[i] = input;
+		if (cur_user_array[i] != input[i])
+			return false;
 	}
-	return temp;
+	
+	return true;
 }
 
 
@@ -295,8 +295,6 @@ data& Vector<data>::operator->()
 {
 	return cur_user_array;
 }
-
-
 
 
 //Debug Functions:
