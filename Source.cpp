@@ -22,20 +22,12 @@ int main()
 	Vector<string> vecSt;
 	Vector<string>* pvecSt = &vecSt;
 
-
 	vector1Operations(vec);
 	vector2Operations(vec2);
-	//vectorChar(vecChar);
-	//vectorString(vecSt);
+	vectorChar(vecChar);
+	vectorString(vecSt);
 
-	testingOperatorOverloading(vec, vec2);
-
-	/*bool a, b, c, d;
-	a = (vec < vec2);	 //3654  <  29  =  0
-	b = (vec <= vec2);	 //3654  <= 29  =  1
-	c = (vec > vec2);	 //3654  >  29  =  1
-	d = (vec >= vec2);	 //3654  >= 29  =  1
-	cout << a << b << c << d << endl;*/
+	//testingOperatorOverloading(vec, vec2);
 
 	cout << endl << "pvec->front(): " << pvec->front() << endl;
 
@@ -44,10 +36,25 @@ int main()
 	//Vector<int> test;
 	//test = vec;
 
+	/*cout << "Testing remove: \n";
+	cout << vec;
+	vec.remove(10);
+	cout << vec;*/
+
+	cout << "overload+: \n";
 	cout << vec << endl;
 	cout << vec2 << endl;
-	cout << vec + vec2 << endl;
+	Vector<int>  vec3 = vec + vec2;
+	cout << vec3 << endl;
 
+	bool test;
+	test = (vec3 == vec2);
+	cout << "TEST: " << test << endl;
+
+
+	//vec.indexOf(1595);
+	//REMOVE USING RECURSION
+	
 	return 0;
 }
 
@@ -183,6 +190,12 @@ void testingOperatorOverloading(Vector<int>& vec, Vector<int>& vec2)
 		cout << "vec >= vec2\n";
 	else
 		cout << "vec < vec2\n";
+	
+	cout << "overload+: \n";
+	cout << vec << endl;
+	cout << vec2 << endl;
+	Vector<int>  vec3 = vec + vec2;
+	cout << vec3 << endl;
 
 
 }
