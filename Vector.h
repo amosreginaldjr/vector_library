@@ -22,8 +22,8 @@ public:
 	bool operator>(Vector<data>& input);
 	bool operator>=(Vector<data>& input);
 	bool operator<=(Vector<data>& input);
-	Vector<data> operator+(Vector<data>& input1);
 	bool operator==(Vector<data>& input);
+	Vector<data> operator+(Vector<data>& input1);
 	data& operator[](int index);
 	data& operator->();
 	Vector();
@@ -37,13 +37,12 @@ public:
 	void pop_back(); //removes the last element
 	void push_back(data push_data_to_back_vector/*user_input*/);
 	void shrink_to_fit();
-	int get_size();
-	int get_capacity();
 	void swap(int index1, int index2);
 	void remove(int index);
+	int get_size();
+	int get_capacity();
 	int indexOf(data& lookFor);
-
-
+	
 	//debug: 
 	/*(These functions should only ever be called when you need to debug
 	the program and is not intended to be part of a release version)*/
